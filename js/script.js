@@ -20,14 +20,31 @@ const age = parseInt(prompt('Quanti anni hai?', 15));
 console.log('anni ' + age);
 
 // calcola il prezzo del viaggio
-const price = km * 0.21;
+let price = km * 0.21;
 console.log('prezzo senza sconti ' + price);
 
 // applica uno sconto del 20% se il cliente è minorenne e del 40% se il cliente è over 65
 let discountedPrice;
 if(age < 18){
     discountedPrice = price - (price * 0.2)
-}else if(age > 65){
-    discountedPrice = price - (price * 0.4)
+    discountedPrice = discountedPrice.toFixed(2)
+    console.log('prezzo scontato ' + discountedPrice)
 }
-console.log('prezzo scontato ' + discountedPrice)
+ if(age > 65){
+    discountedPrice = price - (price * 0.4)
+    discountedPrice = discountedPrice.toFixed(2)
+    console.log('prezzo scontato ' + discountedPrice)
+}
+
+// solo due decimali
+price = price.toFixed(2)
+
+
+// stampa in pagina e aggiungere in pagina il prezzo prima dello sconto età del cliente e il chilometraggio
+if(age > 18 && age < 65){
+    document.getElementById('price').innerText = 'Dovrai percorrere ' + km + ' km' + ', il prezzo del biglietto è di euro ' + price;
+}else if(age < 18){
+    document.getElementById('price').innerText = 'Dovrai percorrere ' + km + ' km' + ', il prezzo del biglietto è di euro ' + price + ', dato che sei minorenne è stato applicato uno sconto del 20%, quindi dovrai pagare euro ' + discountedPrice;
+}else if(age > 65){
+    document.getElementById('price').innerText = 'Dovrai percorrere ' + km + ' km' + ', il prezzo del biglietto è di euro ' + price + ', dato che sei over 65 è stato applicato uno sconto del 40%, quindi dovrai pagare euro ' + discountedPrice;
+}
