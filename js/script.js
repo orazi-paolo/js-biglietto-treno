@@ -12,11 +12,22 @@ BONUS
 */
 
 // chiedere all'utente i chilometri da percorrere
-
-const km = parseInt(prompt('Quanti chilometri devi fare?',50))
-console.log('chilometri ' + km)
+const km = parseInt(prompt('Quanti chilometri devi fare?',50));
+console.log('chilometri ' + km);
 
 // Quanti anni hai?
+const age = parseInt(prompt('Quanti anni hai?', 15));
+console.log('anni ' + age);
 
-const age = parseInt(prompt('Quanti anni hai?', 15))
-console.log('anni ' + age)
+// calcola il prezzo del viaggio
+const price = km * 0.21;
+console.log('prezzo senza sconti ' + price);
+
+// applica uno sconto del 20% se il cliente è minorenne e del 40% se il cliente è over 65
+let discountedPrice;
+if(age < 18){
+    discountedPrice = price - (price * 0.2)
+}else if(age > 65){
+    discountedPrice = price - (price * 0.4)
+}
+console.log('prezzo scontato ' + discountedPrice)
